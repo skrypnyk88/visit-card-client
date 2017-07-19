@@ -7,3 +7,4 @@ module.exports = angular
       template: '<main-component></main-component>'
     });
   });
+

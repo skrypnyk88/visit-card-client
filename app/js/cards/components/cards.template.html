@@ -1,1 +1,431 @@
 <h1>Hello World</h1>
+<div ng-if="$ctrl.showAllCards">
+  <div id="createNewCard" class="visit-cart new-visit-cart" layout="row">
+    <h1>Crete new visit card</h1>
+      <md-button class="md-raised md-primary"
+               ng-click="$ctrl.showCheateCatd()">
+                 Create
+               </md-button>
+  </div>
+
+  <div ng-repeat="card in $ctrl.cards | orderBy:'cart.id'" >
+    <div class="visit-cart show-btn" layout="row" >
+      <div flex="50">
+        <img src="#" alt="#">
+        <h3>{{card.cart.first_name}} {{card.cart.last_name}}</h3>
+        <h4>{{card.cart.position}}</h4>
+      </div>
+      <div flex="50">
+        <div>
+          <h2>{{card.cart.company_name}}</h2>
+        </div>
+        <div>
+          <b>Address:</b> {{card.cart.streat}}{{card.cart.building}}{{card.cart.city}}
+        </div>
+        <div>
+          <b>Tel:/b> {{card.cart.phone}}
+        </div>
+        <div>
+          <b>Site:</b> {{card.cart.email}}
+        </div>
+      </div>
+      <div class="mask">
+          <md-button class="md-raised md-primary btn-mask"
+               ng-click="$ctrl.showUpdateCatd(card)">
+                 Edit
+               </md-button>
+
+      <md-button class="md-raised md-primary btn-mask"
+                 ng-click="$ctrl.delCard(card, $event)">
+                   Delete
+                 </md-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div ng-if="$ctrl.showAddCart" layout-align="center center" layout="row" >
+  <div flex="15"></div>
+  <div class="create-cart" flex="80">
+    <form ng-submit="#" name="createCart">
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>First name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>First name</label>
+            <input type="text" ng-model="$ctrl.cart.first_name"
+                               name="firstName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.firstName.$error" style="color:maroon"
+                                                            role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Last name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Last name</label>
+            <input type="text" ng-model="$ctrl.cart.last_name"
+                               name="lastName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.lastName.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Company name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Company name</label>
+            <input type="text" ng-model="$ctrl.cart.company_name"
+                               name="companyName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.companyName.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Position:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Position</label>
+            <input type="text" ng-model="$ctrl.cart.position"
+                               name="position"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.position.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>City:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>City</label>
+            <input type="text" ng-model="$ctrl.cart.city"
+                               name="city"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.city.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Streat:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Streat</label>
+            <input type="text" ng-model="$ctrl.cart.streat"
+                               name="streat"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.streat.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Building number:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Building number</label>
+            <input type="text" ng-model="$ctrl.cart.building"
+                               name="building"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.building.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Tel:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>phone</label>
+            <input type="text" ng-model="$ctrl.cart.phone" required md-maxlength="9">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Email:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Email</label>
+            <input type="email" ng-model="$ctrl.cart.email" required md-maxlength="25">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info button-form" flex="50">
+        <div>
+          <md-button class="md-raised md-primary"
+                     ng-click="$ctrl.showAllCatd()">
+                       Back
+                     </md-button>
+
+          <md-button class="md-raised md-primary"
+                     ng-click="$ctrl.createCard($ctrl.cart)">
+                       Apply
+                     </md-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div ng-if="$ctrl.showUpdCatds" layout-align="center center" layout="row" >
+  <div flex="15"></div>
+  <div class="create-cart" flex="80">
+    <form ng-submit="#" name="createCart">
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>First name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>First name</label>
+            <input type="text" ng-model="$ctrl.obj.first_name"
+                               name="firstName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.firstName.$error" style="color:maroon"
+                                                            role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Last name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Last name</label>
+            <input type="text" ng-model="$ctrl.obj.last_name"
+                               name="lastName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.lastName.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Company name:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Company name</label>
+            <input type="text" ng-model="$ctrl.obj.company_name"
+                               name="companyName"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.companyName.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Position:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Position</label>
+            <input type="text" ng-model="$ctrl.obj.position"
+                               name="position"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.position.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>City:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>City</label>
+            <input type="text" ng-model="$ctrl.obj.city"
+                               name="city"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.city.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Streat:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Streat</label>
+            <input type="text" ng-model="$ctrl.obj.streat"
+                               name="streat"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.streat.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info"  layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Building number:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Building number</label>
+            <input type="text" ng-model="$ctrl.obj.building"
+                               name="building"
+                               required
+                               md-maxlength="25"
+                               ng-minlength="2">
+            <div ng-messages="teacherForm.building.$error" style="color:maroon"
+                                                           role="alert">
+              <div ng-message="minlength">Too short field</div>
+              <div ng-message="maxlength">Too long fiel</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Tel:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>phone</label>
+            <input type="text" ng-model="$ctrl.obj.phone" required md-maxlength="9">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
+        <div flex="20">
+          <b>Email:</b>
+        </div>
+        <div flex="80">
+          <md-input-container class="cart-input-container">
+            <label>Email</label>
+            <input type="email" ng-model="$ctrl.obj.email" required md-maxlength="25">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout="row" class="cart-main-info button-form" flex="50">
+        <div>
+          <md-button class="md-raised md-primary"
+                     ng-click="$ctrl.showAllCatd()">
+                       Back
+                     </md-button>
+
+          <md-button class="md-raised md-primary"
+                     ng-click="$ctrl.updateCatd($ctrl.obj)">
+                       Apply
+                     </md-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
