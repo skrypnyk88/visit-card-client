@@ -102,3 +102,58 @@
     width: 25%;
   }
 }
+
+.upload-photo {
+  border-radius: 50%;
+  height: 75px;
+  margin-right: 25px;
+  overflow: hidden;
+  position: relative;
+  width: 75px;
+
+  label {
+    background: rgba(0, 0, 0, .3);
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    padding-top: 30%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+
+    -webkit-transition: all .2s;
+       -moz-transition: all .2s;
+        -ms-transition: all .2s;
+         -o-transition: all .2s;
+            transition: all .2s;
+    &:hover {
+      opacity: 1;
+    }
+
+    md-icon {
+      color: #fff;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 70px;
+  min-width: 70px;
+  width: 70px;
+}
+
+.card-avatar {
+  height: 70px;
+}
+
+.vatar-img {
+  height: 70px;
+}
+
+.visit-cart img {
+  height: 50px;
+  width: 70px;
+}

@@ -12,7 +12,8 @@ function Cards(cardsResource) {
   var service = {
     getCards: getCards,
     updateCard: updateCard,
-    addCard: addCard
+    addCard: addCard,
+    uploadPhoto: uploadPhoto
   };
   return service;
 
@@ -36,8 +37,6 @@ function Cards(cardsResource) {
       id: obj.id
     };
 
-    debugger;
-
     return cardsResource.update(params)
       .$promise.then(responseSuccess, responseFailure);
   };
@@ -58,6 +57,15 @@ function Cards(cardsResource) {
 
     return cardsResource.save(params)
       .$promise.then(responseSuccess, responseFailure);
+  };
+
+  function uploadPhoto(id, file) {
+    var params = {
+      id: id,
+      file: file
+    };
+    debugger;
+    return cardsResource.upload(params).$promise.then(responseSuccess, responseFailure);
   };
 
   function responseSuccess(data) {

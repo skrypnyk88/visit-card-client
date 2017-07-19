@@ -11,9 +11,15 @@
   <div ng-repeat="card in $ctrl.cards | orderBy:'cart.id'" >
     <div class="visit-cart show-btn" layout="row" >
       <div flex="50">
-        <img src="#" alt="#">
-        <h3>{{card.cart.first_name}} {{card.cart.last_name}}</h3>
-        <h4>{{card.cart.position}}</h4>
+        <div class="card-avatar">
+          <img src='{{card.url || $ctrl.defaultPhoto}}'
+             class='avatar card-avatar'
+             alt='avatar'>
+        </div>
+        <div>
+          <h3>{{card.cart.first_name}} {{card.cart.last_name}}</h3>
+          <h4>{{card.cart.position}}</h4>
+        </div>
       </div>
       <div flex="50">
         <div>
@@ -46,7 +52,8 @@
 
 
 <div ng-if="$ctrl.showAddCart" layout-align="center center" layout="row" >
-  <div flex="15"></div>
+  <div flex="15">
+  </div>
   <div class="create-cart" flex="80">
     <form ng-submit="#" name="createCart">
       <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
@@ -239,7 +246,23 @@
 
 
 <div ng-if="$ctrl.showUpdCatds" layout-align="center center" layout="row" >
-  <div flex="15"></div>
+  <div flex="15">
+    <form name='uploadForm'>
+      <div class='upload-photo'>
+        <img src='{{$ctrl.obj.url || $ctrl.defaultPhoto}}'
+             class='avatar card-avatar'
+             alt='avatar'>
+        <label for='file{{$ctrl.card.id}}' class='overlay'>
+          <md-icon>add_a_photo</md-icon>
+        </label>
+
+        <input id='file{{$ctrl.card.id}}' name='file'
+               class='ng-hide' ng-model='file' type='file'
+               ng-change='$ctrl.uploadPhoto($ctrl.obj, file)'
+               base-sixty-four-input/>
+      </div>
+    </form>
+  </div>
   <div class="create-cart" flex="80">
     <form ng-submit="#" name="createCart">
       <div layout="row" class="cart-main-info" layout-align="center center" flex="50">

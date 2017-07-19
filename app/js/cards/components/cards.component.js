@@ -9,15 +9,16 @@ module.exports = angular
     controller: CardsController
   });
 
-CardsController.$inject = ['Cards', '$state'];
+CardsController.$inject = ['Cards', 'globalSettings'];
 
-function CardsController(Cards) {
+function CardsController(Cards, globalSettings) {
   var ctrl = this;
   ctrl.cards = {};
   ctrl.cart = {};
   ctrl.showAllCards = true;
   ctrl.showAddCart = false;
   ctrl.showEditCart = false;
+  ctrl.defaultPhoto = globalSettings.DEFAULT_PHOTO;
 
   ctrl.loadCards = function() {
     Cards.getCards().then(
@@ -42,11 +43,11 @@ function CardsController(Cards) {
     ctrl.obj = Object.assign({}, el.cart)
     ctrl.showAllCards = false;
     ctrl.showUpdCatds = true;
+    ctrl.obj.url = el.url;
   }
 
   ctrl.createCard = function(el) {
     ctrl.obj = Object.assign({}, el)
-    debugger;
     Cards.addCard(ctrl.obj)
       .then(function(data) {
       return data;
@@ -58,6 +59,7 @@ function CardsController(Cards) {
     Cards.updateCard(ctrl.obj).then(function(data) {
       return data});
   }
+
   ctrl.delCard = function(el, event){
     if(confirm("Are you sure")){
       ctrl.obj = Object.assign({}, el)
@@ -66,6 +68,16 @@ function CardsController(Cards) {
       return data});
       event.path[3].classList.add("hide");
     };
+  }
+
+  ctrl.uploadPhoto = function(card, file) {
+    var id = card.id;
+    Cards.uploadPhoto(id, file).then(
+      function(response) {
+        debugger;
+        ctrl.obj.url = response.url;
+      }
+    );
   }
 
   ctrl.loadCards();

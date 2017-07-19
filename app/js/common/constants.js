@@ -4,5 +4,5 @@ module.exports = angular
     SERVER_URL: 'http://localhost:3000',
     MAIN_STATE: 'main.carts',
     LOGIN_STATE: 'login',
-    STUDENT_IMG: './app/img/student.png'
+    DEFAULT_PHOTO: './app/img/profile/educator.svg'
   });
