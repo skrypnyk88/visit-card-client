@@ -13,12 +13,22 @@ function Cards(cardsResource) {
     getCards: getCards,
     updateCard: updateCard,
     addCard: addCard,
-    uploadPhoto: uploadPhoto
+    uploadPhoto: uploadPhoto,
+    searchCards: searchCards
   };
   return service;
 
   function getCards() {
     return cardsResource.query()
+      .$promise.then(responseSuccess, responseFailure);
+  };
+
+  function searchCards(obj) {
+    var params = {};
+    debugger;
+    params.q = obj.text
+
+    return cardsResource.query(params)
       .$promise.then(responseSuccess, responseFailure);
   };
 

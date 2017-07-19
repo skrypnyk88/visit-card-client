@@ -19,6 +19,7 @@ function CardsController(Cards, globalSettings) {
   ctrl.showAddCart = false;
   ctrl.showEditCart = false;
   ctrl.defaultPhoto = globalSettings.DEFAULT_PHOTO;
+  ctrl.search = {};
 
   ctrl.loadCards = function() {
     Cards.getCards().then(
@@ -76,6 +77,16 @@ function CardsController(Cards, globalSettings) {
       function(response) {
         debugger;
         ctrl.obj.url = response.url;
+      }
+    );
+  }
+
+  ctrl.findCard = function(text) {
+    // ctrl.obj = Object.assign({}, text)
+    debugger;
+    Cards.searchCards(text).then(
+      function(data) {
+        ctrl.cards = data;
       }
     );
   }

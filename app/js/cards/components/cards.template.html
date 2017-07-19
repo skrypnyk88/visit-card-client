@@ -1,5 +1,32 @@
-<h1>Hello World</h1>
 <div ng-if="$ctrl.showAllCards">
+  <div>
+    <form name="projectForm" layout="row" layout-align="center center" class="search-form">
+      <div flex="90">
+        <md-input-container class="md-block">
+          <label>Enter text here...</label>
+          <input type="text" ng-model="$ctrl.search.text"
+                             name="search"
+                             md-maxlength="25"
+                             ng-minlength="2"
+                             >
+          <div ng-messages="projectForm.description.$error">
+            <div ng-message="required">
+              This is required.
+            </div>
+            <div ng-message="md-maxlength">
+              The description must be less than 30 characters long.
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+      <div flex="10">
+        <md-button class="md-raised md-primary searchBtn"
+                   ng-click="$ctrl.findCard($ctrl.search)">
+                       Find
+        </md-button>
+      </div>
+    </form>
+  </div>
   <div id="createNewCard" class="visit-cart new-visit-cart" layout="row">
     <h1>Crete new visit card</h1>
       <md-button class="md-raised md-primary"
@@ -55,7 +82,7 @@
   <div flex="15">
   </div>
   <div class="create-cart" flex="80">
-    <form ng-submit="#" name="createCart">
+    <form name="createCart">
       <div layout="row" class="cart-main-info" layout-align="center center" flex="50">
         <div flex="20">
           <b>First name:</b>
