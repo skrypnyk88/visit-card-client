@@ -161,3 +161,35 @@
 .search-form {
   width: 80%;
 }
+
+//  Login, forgot, reset components  //
+.hero-container {
+  height: 100%;
+}
+.ng-scope {
+  height: 100%;
+}
+login-component, forgot-component, reset-component {
+  text-align: center;
+
+  .login-form {
+    margin-top: 15vh;
+    width: 300px;
+  }
+}
+
+side-bar {
+  border-right: 1px solid #cdcdd5;
+}
+
+.menu {
+  margin-top: 0;
+}
+
+md-input-container:last-of-type {
+  margin-bottom: 0;
+}
+
+md-card-content {
+  padding-bottom: 0;
+}
