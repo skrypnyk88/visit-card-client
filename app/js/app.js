@@ -1,7 +1,6 @@
 var angular = require('angular');
 var mainModule = require('./main/main.module.js');
 var vendorModule = require('./requirements.js');
-var valuesModule = require('./common/values.js');
 var tokenInjector = require('./common/services/tokenInjector.service.js');
 var constantsModule = require('./common/constants.js');
 
@@ -10,7 +9,6 @@ angular
     vendorModule.name,
     constantsModule.name,
     mainModule.name,
-    valuesModule.name,
     tokenInjector.name,
   ])
   .config(
